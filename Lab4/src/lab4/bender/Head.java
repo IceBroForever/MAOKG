@@ -15,123 +15,123 @@ import javax.vecmath.Vector3f;
 
 public class Head extends TransformGroup {
 
-    public Head(double height) {
+    public Head(double size) {
         TransformGroup cylinderGroup = new FrustumGenerator()
-                .setHeight(height / 2)
-                .setInnerRadius(height / 4)
-                .setOuterRadius(height / 4)
+                .setHeight(size / 2)
+                .setInnerRadius(size / 4)
+                .setOuterRadius(size / 4)
                 .compile(getAppearance());
         addChild(cylinderGroup);
 
         TransformGroup halfSphere1 = new HalfSphereGenerator()
                 .setType(HalfSphereGenerator.Type.OPENED)
-                .setRadius(height / 4)
+                .setRadius(size / 4)
                 .compile(getAppearance());
         Transform3D halfSphere1Transform = new Transform3D();
-        halfSphere1Transform.setTranslation(new Vector3d(0, 0, height / 4));
+        halfSphere1Transform.setTranslation(new Vector3d(0, 0, size / 4));
         halfSphere1.setTransform(halfSphere1Transform);
         addChild(halfSphere1);
 
         TransformGroup halfSphere2 = new HalfSphereGenerator()
                 .setType(HalfSphereGenerator.Type.OPENED)
-                .setRadius(height / 16)
+                .setRadius(size / 16)
                 .compile(getAppearance());
         Transform3D halfSphere2Transform = new Transform3D();
         halfSphere2Transform.setScale(new Vector3d(1, 1, 0.5));
-        halfSphere2Transform.setTranslation(new Vector3d(0, 0, height / 2 - height / 90));
+        halfSphere2Transform.setTranslation(new Vector3d(0, 0, size / 2 - size / 90));
         halfSphere2.setTransform(halfSphere2Transform);
         addChild(halfSphere2);
 
         TransformGroup antena = new FrustumGenerator()
-                .setHeight(height / 4)
-                .setInnerRadius(height / 64)
-                .setOuterRadius(height / 32)
+                .setHeight(size / 4)
+                .setInnerRadius(size / 64)
+                .setOuterRadius(size / 32)
                 .compile(getAppearance());
         Transform3D antenaTransform = new Transform3D();
         antenaTransform.rotX(Math.PI);
-        antenaTransform.setTranslation(new Vector3d(0, 0, height / 2 + height / 8));
+        antenaTransform.setTranslation(new Vector3d(0, 0, size / 2 + size / 8));
         antena.setTransform(antenaTransform);
         addChild(antena);
 
         TransformGroup antenaSphereGroup = new TransformGroup();
-        Sphere antenaSphere = new Sphere((float) height / 32);
+        Sphere antenaSphere = new Sphere((float) size / 32);
         antenaSphere.setAppearance(getAppearance());
         antenaSphereGroup.addChild(antenaSphere);
         Transform3D antenaSphereTransform = new Transform3D();
-        antenaSphereTransform.setTranslation(new Vector3f(0, 0, 3 * (float)height / 4));
+        antenaSphereTransform.setTranslation(new Vector3f(0, 0, 3 * (float)size / 4));
         antenaSphereGroup.setTransform(antenaSphereTransform);
         addChild(antenaSphereGroup);
 
         TransformGroup topEyes = new CubeGenerator()
-                .setSize(height / 4)
+                .setSize(size / 4)
                 .compile(getAppearance());
         Transform3D topEyesTransform = new Transform3D();
-        topEyesTransform.setTranslation(new Vector3f( 3 * (float) height / 16, 0, (float) height / 4));
+        topEyesTransform.setTranslation(new Vector3f( 3 * (float) size / 16, 0, (float) size / 4));
         topEyesTransform.setScale(new Vector3d(0.75, 1, 0.02));
         topEyes.setTransform(topEyesTransform);
         addChild(topEyes);
 
         TransformGroup bottomEyes = new CubeGenerator()
-                .setSize(height / 4)
+                .setSize(size / 4)
                 .compile(getAppearance());
         Transform3D bottomEyesTransform = new Transform3D();
-        bottomEyesTransform.setTranslation(new Vector3f( 3 * (float) height / 16, 0, (float) height / 16));
+        bottomEyesTransform.setTranslation(new Vector3f( 3 * (float) size / 16, 0, (float) size / 16));
         bottomEyesTransform.setScale(new Vector3d(0.75, 1, 0.02));
         bottomEyes.setTransform(bottomEyesTransform);
         addChild(bottomEyes);
 
         TransformGroup leftEyes = new CubeGenerator()
-                .setSize(height / 4)
+                .setSize(size / 4)
                 .compile(getAppearance());
         Transform3D leftEyesTransform = new Transform3D();
         leftEyesTransform.setTranslation(new Vector3f(
-                3 * (float) height / 16,
-                (float) height / 4 - 0.02f * (float) height / 4,
-                5 * (float) height / 32));
+                3 * (float) size / 16,
+                (float) size / 4 - 0.02f * (float) size / 4,
+                5 * (float) size / 32));
         leftEyesTransform.setScale(new Vector3d(0.75, 0.02, 0.39));
         leftEyes.setTransform(leftEyesTransform);
         addChild(leftEyes);
 
         TransformGroup rightEyes = new CubeGenerator()
-                .setSize(height / 4)
+                .setSize(size / 4)
                 .compile(getAppearance());
         Transform3D rightEyesTransform = new Transform3D();
         rightEyesTransform.setTranslation(new Vector3f(
-                3 * (float) height / 16,
-                (float) -height / 4 + 0.02f * (float) height / 4,
-                5 * (float) height / 32));
+                3 * (float) size / 16,
+                (float) -size / 4 + 0.02f * (float) size / 4,
+                5 * (float) size / 32));
         rightEyesTransform.setScale(new Vector3d(0.75, 0.02, 0.39));
         rightEyes.setTransform(rightEyesTransform);
         addChild(rightEyes);
 
-        Eye leftEye = new Eye(3 * (float) height / 16);
+        Eye leftEye = new Eye(3 * (float) size / 16);
         Transform3D leftEyeTransform = new Transform3D();
         leftEyeTransform.setTranslation(new Vector3f(
-                9 * (float) height / 32,
-                (float) height / 8,
-                5 * (float) height / 32
+                9 * (float) size / 32,
+                (float) size / 8,
+                5 * (float) size / 32
         ));
         leftEye.setTransform(leftEyeTransform);
         addChild(leftEye);
 
-        Eye rightEye = new Eye(3 * (float) height / 16);
+        Eye rightEye = new Eye(3 * (float) size / 16);
         Transform3D rightEyeTransform = new Transform3D();
         rightEyeTransform.setTranslation(new Vector3f(
-                9 * (float) height / 32,
-                (float) -height / 8,
-                5 * (float) height / 32
+                9 * (float) size / 32,
+                (float) -size / 8,
+                5 * (float) size / 32
         ));
         rightEye.setTransform(rightEyeTransform);
         addChild(rightEye);
 
         TransformGroup backEyes = new CubeGenerator()
-                .setSize(height / 4)
+                .setSize(size / 4)
                 .compile(leftEye.getPupilAppearance());
         Transform3D backEyesTransform = new Transform3D();
         backEyesTransform.setTranslation(new Vector3f(
-                (float) height / 4,
+                (float) size / 4,
                 0,
-                5 * (float) height / 32));
+                5 * (float) size / 32));
         backEyesTransform.setScale(new Vector3d(0.02, 0.98, 0.39));
         backEyes.setTransform(backEyesTransform);
         addChild(backEyes);

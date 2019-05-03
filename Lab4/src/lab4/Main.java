@@ -1,6 +1,7 @@
 package lab4;
 
 import com.sun.j3d.utils.universe.SimpleUniverse;
+import lab4.bender.Body;
 import lab4.bender.Head;
 
 import javax.media.j3d.*;
@@ -47,7 +48,7 @@ public class Main extends JFrame implements KeyListener {
         BranchGroup group = new BranchGroup();
         group.addChild(Axes.getAxes());
 
-        group.addChild(new Head(1));
+        group.addChild(new Body(1));
 
         Color3f lightColor = new Color3f(1, 1, 1);
         BoundingSphere lightArea = new BoundingSphere(new Point3d(0, 0, 0), 100);
