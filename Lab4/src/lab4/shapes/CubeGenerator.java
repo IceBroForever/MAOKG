@@ -7,7 +7,7 @@ import com.sun.j3d.utils.geometry.NormalGenerator;
 import javax.media.j3d.*;
 import javax.vecmath.Point3d;
 
-public class CubeGenerator implements Generator {
+public class CubeGenerator extends Generator {
     public static final double DEFAULT_SIZE = 1f;
 
     private double size = DEFAULT_SIZE;
@@ -21,17 +21,9 @@ public class CubeGenerator implements Generator {
         return this;
     }
 
-    @Override
-    public TransformGroup compile(Appearance appearance) {
-        TransformGroup transformGroup = new TransformGroup();
-
-        Shape3D cube = new Shape3D();
-        cube.setGeometry(compileGeometry());
-        cube.setAppearance(appearance);
-
-        transformGroup.addChild(cube);
-
-        return transformGroup;
+    public CubeGenerator setMaxLineLength(double maxLineLength) {
+        this.maxLineLength = maxLineLength;
+        return this;
     }
 
     @Override

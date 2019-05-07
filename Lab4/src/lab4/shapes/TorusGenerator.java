@@ -5,7 +5,7 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
-public class TorusGenerator implements Generator {
+public class TorusGenerator extends Generator {
     public static final double DEFAULT_INNER_RADIUS = 0.25d;
     public static final double DEFAULT_OUTER_RADIUS = 0.5d;
     public static final Point3d DEFAULT_CENTER = new Point3d(0d, 0d, 0d);
@@ -50,19 +50,6 @@ public class TorusGenerator implements Generator {
     public TorusGenerator setMaxLineLength(double maxLineLength) {
         this.maxLineLength = maxLineLength;
         return this;
-    }
-
-    @Override
-    public TransformGroup compile(Appearance appearance) {
-        TransformGroup transformGroup = new TransformGroup();
-
-        Shape3D torus = new Shape3D();
-        torus.setGeometry(compileGeometry());
-        torus.setAppearance(appearance);
-
-        transformGroup.addChild(torus);
-
-        return transformGroup;
     }
 
     @Override

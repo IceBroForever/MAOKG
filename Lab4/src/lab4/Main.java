@@ -1,8 +1,9 @@
 package lab4;
 
 import com.sun.j3d.utils.universe.SimpleUniverse;
-import lab4.bender.Body;
-import lab4.bender.Head;
+import lab4.bender.Arm;
+import lab4.bender.Bender;
+import lab4.bender.Leg;
 
 import javax.media.j3d.*;
 import javax.swing.*;
@@ -20,8 +21,8 @@ public class Main extends JFrame implements KeyListener {
     private double angleDelta = Math.PI / 100;
 
     private SimpleUniverse universe;
-    private Point3d eyePosition = new Point3d(0d, -1d, 0d);
-    private Vector3d sightDirection = new Vector3d(0d, 1d, 0d);
+    private Point3d eyePosition = new Point3d(2d, 0d, 1d);
+    private Vector3d sightDirection = new Vector3d(-1d, 0d, 0d);
     private Vector3d upDirection = new Vector3d(0d, 0d, 1d);
 
     public Main() {
@@ -48,14 +49,20 @@ public class Main extends JFrame implements KeyListener {
         BranchGroup group = new BranchGroup();
         group.addChild(Axes.getAxes());
 
-        group.addChild(new Body(1));
+        group.addChild(new Bender(2));
 
         Color3f lightColor = new Color3f(1, 1, 1);
         BoundingSphere lightArea = new BoundingSphere(new Point3d(0, 0, 0), 100);
-        Vector3f lightDirection = new Vector3f(-1, 1, -1);
-        DirectionalLight light = new DirectionalLight(lightColor, lightDirection);
-        light.setInfluencingBounds(lightArea);
-        group.addChild(light);
+
+        Vector3f lightDirection1 = new Vector3f(-1, 1, -1);
+        DirectionalLight light1 = new DirectionalLight(lightColor, lightDirection1);
+        light1.setInfluencingBounds(lightArea);
+        group.addChild(light1);
+
+        Vector3f lightDirection2 = new Vector3f(-1, 0, 0);
+        DirectionalLight light2 = new DirectionalLight(lightColor, lightDirection2);
+        light2.setInfluencingBounds(lightArea);
+        group.addChild(light2);
 
         return group;
     }

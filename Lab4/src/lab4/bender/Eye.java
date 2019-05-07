@@ -12,17 +12,20 @@ import javax.vecmath.Vector3f;
 
 public class Eye extends TransformGroup {
     public Eye(double size) {
+        TransformGroup group = new TransformGroup();
+
         Sphere eye = new Sphere((float) size / 2);
         eye.setAppearance(getEyeAppearance());
+        group.addChild(eye);
 
         TransformGroup pupilGroup = new TransformGroup();
         Transform3D pupilTransform = new Transform3D();
         pupilTransform.setTranslation(new Vector3f((float) size / 3, 0f, 0f));
         pupilGroup.setTransform(pupilTransform);
         pupilGroup.addChild(new CubeGenerator().setSize((float) size / 6).compile(getPupilAppearance()));
+        group.addChild(pupilGroup);
 
-        addChild(pupilGroup);
-        addChild(eye);
+        addChild(group);
     }
 
     public Appearance getEyeAppearance() {
@@ -46,7 +49,7 @@ public class Eye extends TransformGroup {
                         new Color3f(0f, 0f, 0f),
                         new Color3f(0f, 0f, 0f),
                         new Color3f(0f, 0f, 0f),
-                        new Color3f(1f, 1f, 1f),
+                        new Color3f(0f, 0f, 0f),
                         70f
                 )
         );

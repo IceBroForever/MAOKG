@@ -4,20 +4,13 @@ import javax.media.j3d.*;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
-public class CircleGenerator implements Generator {
+public class CircleGenerator extends Generator {
     public static final double DEFAULT_RADIUS = 0.5d;
-    public static final double DEFAULT_MAX_LINE_LENGTH = 0.01d;
 
     private double radius = DEFAULT_RADIUS;
-    private double maxLineLength = DEFAULT_MAX_LINE_LENGTH;
 
     public CircleGenerator setRadius(double radius) {
         this.radius = radius;
-        return this;
-    }
-
-    public CircleGenerator setMaxLineLength(double maxLineLength) {
-        this.maxLineLength = maxLineLength;
         return this;
     }
 
@@ -25,20 +18,9 @@ public class CircleGenerator implements Generator {
         return radius;
     }
 
-    public double getMaxLineLength() {
-        return maxLineLength;
-    }
-
-    public TransformGroup compile(Appearance appearance) {
-        TransformGroup transformGroup = new TransformGroup();
-
-        Shape3D circle = new Shape3D();
-        circle.setGeometry(compileGeometry());
-        circle.setAppearance(appearance);
-
-        transformGroup.addChild(circle);
-
-        return transformGroup;
+    public CircleGenerator setMaxLineLength(double maxLineLength) {
+        this.maxLineLength = maxLineLength;
+        return this;
     }
 
     @Override

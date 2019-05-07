@@ -7,15 +7,13 @@ import javax.media.j3d.*;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
-public class FrustumGenerator implements Generator {
+public class FrustumGenerator extends Generator {
     public static final double DEFAULT_INNER_RADIUS = 0.25d;
     public static final double DEFAULT_OUTER_RADIUS = 0.5d;
-    public static final double DEFAULT_MAX_LINE_LENGTH = 0.01d;
     public static final double DEFAULT_HEIGHT = 1d;
 
     private double innerRadius = DEFAULT_INNER_RADIUS;
     private double outerRadius = DEFAULT_OUTER_RADIUS;
-    private double maxLineLength = DEFAULT_MAX_LINE_LENGTH;
     private double height = DEFAULT_HEIGHT;
 
     public double getInnerRadius() {
@@ -36,10 +34,6 @@ public class FrustumGenerator implements Generator {
         return this;
     }
 
-    public double getMaxLineLength() {
-        return maxLineLength;
-    }
-
     public FrustumGenerator setMaxLineLength(double maxLineLength) {
         this.maxLineLength = maxLineLength;
         return this;
@@ -52,18 +46,6 @@ public class FrustumGenerator implements Generator {
     public FrustumGenerator setHeight(double height) {
         this.height = height;
         return this;
-    }
-
-    @Override
-    public TransformGroup compile(Appearance appearance) {
-        Shape3D frustum = new Shape3D();
-
-        frustum.setGeometry(compileGeometry());
-        frustum.setAppearance(appearance);
-
-        TransformGroup transformGroup = new TransformGroup();
-        transformGroup.addChild(frustum);
-        return transformGroup;
     }
 
     @Override

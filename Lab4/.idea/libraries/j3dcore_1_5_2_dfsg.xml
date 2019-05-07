@@ -1,8 +1,8 @@
 <component name="libraryTable">
-  <library name="j3dcore-1.5.2">
+  <library name="j3dcore-1.5.2+dfsg">
     <CLASSES>
-      <root url="jar:///usr/share/java/j3dcore-1.5.2.jar!/" />
-      <root url="jar:///usr/share/java/j3dutils-1.5.2.jar!/" />
+      <root url="jar:///usr/share/java/j3dcore-1.5.2+dfsg.jar!/" />
+      <root url="jar:///usr/share/java/j3dutils-1.5.2+dfsg.jar!/" />
       <root url="jar:///usr/share/java/vecmath-1.5.2.jar!/" />
     </CLASSES>
     <JAVADOC />
