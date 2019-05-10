@@ -1,9 +1,7 @@
 package lab4;
 
 import com.sun.j3d.utils.universe.SimpleUniverse;
-import lab4.bender.Arm;
 import lab4.bender.Bender;
-import lab4.bender.Leg;
 
 import javax.media.j3d.*;
 import javax.swing.*;
@@ -17,7 +15,7 @@ import java.awt.event.KeyListener;
 
 public class Main extends JFrame implements KeyListener {
 
-    private double movingDelta = 0.05d;
+    private double movingDelta = 0.1d;
     private double angleDelta = Math.PI / 100;
 
     private SimpleUniverse universe;

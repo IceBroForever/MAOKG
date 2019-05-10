@@ -47,7 +47,6 @@ public class HalfSphereGenerator extends Generator {
             normals[i++] = new Vector3f(coords[i-1]);
             normals[i-1].normalize();
             double currentAngle = segment * angleDelta;
-            System.out.println(currentAngle);
             double nextAngle = (segment + 1)*angleDelta;
             for(int level = 1; level <= numberOfVerticalLevels; level++){
                 double angleFromVertical = level * angleDelta;
